@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .fundo{
+            background-image: linear-gradient(45deg, black,rgb(31, 117, 39) );
+            height: 100vh;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .calculadora{
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+           border-radius:15px ;
+           padding: 15px;
+   
+        }
+        p,h1,h2{
+            color: white;
+        }
+        .botao{
+            color: white;
+            background: rgb(30, 30, 30);
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            border: none;
+            margin: 2px;
+            border-radius:4px ;
+            font-size: 20px;
+        }
+        .botao:hover{
+            background:black ;
+            color: white;
+        }
+        p{
+            background: white;
+            height: 40px;
+            margin: 5px;
+            text-align: right;
+            font-size: 30px;
+            color: black;
+            border-radius: 1px;
+        }
+        h1{
+            position: relative;
+            float: right;
+            margin-top: 750px;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="fundo">
+        <h1>Jedião Andrade</h1>
+        <div class="calculadora">
+        <h2>Calculadora</h2>
+        <p id="resultado"></p>
+       
+            <table>
+                <tr>
+                    <td><button  class="botao" onclick="resetar()">C</button></td>
+                    <td><button  class="botao" onclick="apagar()">bx</button></td>
+                    <td><button class="botao">/</button></td>
+                    <td><button class="botao" onclick="adiciona('*')">X</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao"  onclick="adiciona('7')">7</button></td>
+                    <td><button class="botao" onclick="adiciona('8')">8</button></td>
+                    <td><button class="botao" onclick="adiciona('9')">9</button></td>
+                    <td><button class="botao" onclick="adiciona('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao" onclick="adiciona('4')">4</button></td>
+                    <td><button class="botao" onclick="adiciona('5')">5</button></td>
+                    <td><button class="botao" onclick="adiciona('6')">6</button></td>
+                    <td><button class="botao" onclick="adiciona('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao" onclick="adiciona('1')">1</button></td>
+                    <td><button class="botao" onclick="adiciona('2')">2</button></td>
+                    <td><button class="botao" onclick="adiciona('3')">3</button></td>
+                    <td rowspan="2"><button class="botao" style="height: 106px;" onclick="calcular()">=</button></td>
+                </tr>
+                <tr>
+                    <td colspan="2" ><button class="botao" style="width: 106px;" onclick="adiciona('0')">0</button></td>
+                    <td><button class="botao" onclick="adiciona('.')" >.</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        function adiciona(num){
+           var numero = document.getElementById("resultado").innerHTML;
+           
+           document.getElementById("resultado").innerHTML = numero + num;
+        }
+
+        function resetar(){
+            document.getElementById("resultado").innerHTML='';
+        }
+
+        function apagar(){
+           var resultado = document.getElementById("resultado").innerHTML;
+            document.getElementById("resultado").innerHTML=resultado.substring(0,resultado.length -1)
+        }
+        function calcular(){
+            var resultado = document.getElementById("resultado").innerHTML;
+
+           if(resultado){
+             
+            document.getElementById("resultado").innerHTML=eval(resultado);
+            }
+        }
+
+      
+    </script>
+    
+</body>
+</html>
